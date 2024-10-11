@@ -1,0 +1,29 @@
+% Create SimpleClass Dataset
+
+% Set random seed for reproducibility
+rng(42);
+
+% Number of samples
+num_samples = 1000;
+
+% Number of features (neurons)
+num_features = 3;
+
+% Generate random input data
+inputs = randn(num_features, num_samples);
+
+% Generate target outputs
+targets = zeros(num_features, num_samples);
+for i = 1:num_samples
+    % Assign class based on the sum of inputs
+    if sum(inputs(:, i)) > 0
+        targets(:, i) = [1; 1; 1];
+    else
+        targets(:, i) = [0; 0; 0];
+    end
+end
+
+% Save the dataset
+save('simpleclass_dataset.mat', 'inputs', 'targets');
+
+disp('SimpleClass dataset has been created and saved as simpleclass_dataset.mat');
